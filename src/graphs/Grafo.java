@@ -13,14 +13,16 @@ public class Grafo {
     private List<Vertice> vertices;
     private MatrizAdjacencia matrizAdjacencia;
     private Map<String, Integer> rotuloEmIndice;
+    private boolean direcao;
 
-    public Grafo(int qtdeVertices){
+    public Grafo(int qtdeVertices) {
         if(qtdeVertices <= 0){
             throw new IllegalArgumentException("Informe uma quantidade de vertices válida");
         }
         this.qtdeMaximaVertices = qtdeVertices;
         this.vertices = new ArrayList<>();
         this.rotuloEmIndice = new HashMap<>();
+        this.direcao = direcao;
     }
 
     public void addVertice(String rotulo) throws Exception{

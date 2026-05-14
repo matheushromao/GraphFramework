@@ -5,6 +5,8 @@ import java.util.Objects;
 public class Vertice {
     private String rotulo;
     private int grau;
+    private int grauEntrada;
+    private int grauSaida;
 
     public Vertice(String rotulo){
         this.rotulo = rotulo;
@@ -22,11 +24,29 @@ public class Vertice {
         this.grau += value;
     }
 
+    void addGrauEntrada(int value){
+        this.grauEntrada += value;
+    }
+
+    void addGrauSaida(int value){
+        this.grauSaida += value;
+    }
+
+    public int getGrauSaida(){
+        return grauSaida;
+    }
+    public int getGrauEntrada(){
+        return grauEntrada;
+    }
+
+
     @Override
     public String toString() {
         return "Vertice{" +
                 "rotulo='" + rotulo + '\'' +
                 ", grau=" + grau +
+                ", grauEntrada=" + grauEntrada +
+                ", grauSaida=" + grauSaida +
                 '}';
     }
 

@@ -8,24 +8,34 @@ public class MatrizAdjacencia {
     private int[][] matriz;
     private int qtdeVertices;
     private List<Vertice> vertices;
+    private boolean direcao;
 
-    public MatrizAdjacencia(List<Vertice> vertices){
+    public MatrizAdjacencia(List<Vertice> vertices) {
         this.vertices = vertices;
         this.qtdeVertices = vertices.size();
         this.matriz = new int[qtdeVertices][qtdeVertices];
+        this.direcao = direcao;
     }
 
     public void conectarVertices(int indiceVerticeOrigem, int indiceVerticeDestino){
         var verticeOrigem = vertices.get(indiceVerticeOrigem);
         var verticeDestino = vertices.get(indiceVerticeDestino);
-        if(indiceVerticeOrigem == indiceVerticeDestino){
-            matriz[indiceVerticeOrigem][indiceVerticeDestino] += 1;
-            verticeOrigem.addGrau(2);
-        }else{
-            matriz[indiceVerticeOrigem][indiceVerticeDestino]+=1;
-            verticeOrigem.addGrau(1);
-            matriz[indiceVerticeDestino][indiceVerticeOrigem]+=1;
-            verticeDestino.addGrau(1);
+
+        matriz[indiceVerticeOrigem][indiceVerticeDestino] += 1;
+
+        if (direcao){
+
+            verticeOrigem.addGrauSaida(1);
+            verticeDestino.addGrauEntrada(1);
+
+        } else {
+            if (indiceVerticeOrigem == indiceVerticeDestino) {
+                verticeOrigem.addGrau(2);
+            } else {
+                verticeOrigem.addGrau(1);
+                matriz[indiceVerticeDestino][indiceVerticeOrigem] += 1;
+                verticeDestino.addGrau(1);
+            }
         }
     }
 

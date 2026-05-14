@@ -1,6 +1,7 @@
 import graphs.Grafo;
 import graphs.MatrizAdjacencia;
 import graphs.Vertice;
+import path.BuscaEmLarguraImperativa;
 import path.BuscaEmProfundidadeRecursiva;
 import path.BuscaProfundidadeImperativa;
 
@@ -29,7 +30,7 @@ void main() {
 //    matrizAdjacencia.imprimir();
 
     try {
-        Grafo grafo = new Grafo(6);
+        Grafo grafo = new Grafo(8);
         grafo.addVertice("V1");
         grafo.addVertice("V2");
         grafo.addVertice("V3");
@@ -49,10 +50,15 @@ void main() {
         var buscaProfundidade = new BuscaProfundidadeImperativa(grafo);
         var dfsProfundidade = new BuscaEmProfundidadeRecursiva(grafo);
 
+
         dfsProfundidade.buscar("V1");
 
         IO.println(buscaProfundidade.buscar("V1"));
         IO.println(dfsProfundidade.getCaminho());
+
+        var bfsImperativo = new BuscaEmLarguraImperativa(grafo);
+        IO.println(bfsImperativo.buscar("V1"));
+
     }catch (Exception e){
         IO.println(e.getMessage());
     }
