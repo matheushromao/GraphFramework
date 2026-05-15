@@ -30,7 +30,7 @@ void main() {
 //    matrizAdjacencia.imprimir();
 
     try {
-        Grafo grafo = new Grafo(8);
+        Grafo grafo = new Grafo(7);
         grafo.addVertice("V1");
         grafo.addVertice("V2");
         grafo.addVertice("V3");
